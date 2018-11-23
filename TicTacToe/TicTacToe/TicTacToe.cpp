@@ -17,6 +17,10 @@ int main()
     char board8 = '8';
     char board9 = '9';
     std::cout << " "<< board1 <<" | "<< board2 <<" | "<< board3 <<" \n";
+    std::cout << " --|---|--\n";
+    std::cout << " "<< board4 <<" | "<< board5 <<" | "<< board6 <<" \n";
+    std::cout << " --|---|--\n";
+    std::cout << " "<< board7 <<" | "<< board8 <<" | "<< board9 <<" \n";
 	return 0;
 }
 // 1 | 2 | 3
