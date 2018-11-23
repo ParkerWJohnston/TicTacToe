@@ -2,6 +2,8 @@
 #include <iostream>
 
 using namespace std;
+int location; //location of X or O
+char turn = 'x';
 
 void printBoard(char board[9]) {
 	std::cout << " " << board[0] << " | " << board[1] << " | " << board[2] << " \n";
@@ -11,32 +13,17 @@ void printBoard(char board[9]) {
 	std::cout << " " << board[6] << " | " << board[7] << " | " << board[8] << " \n";
 };
 
-//void chooseX() {
-//	std::cout << "Player X, choose a location\n";
-//	std::cin >> location;
-//	if (location !> 0 || location !< 10) {
-//		boardPlaces[location - 1] = 'X';
-//		turn = 'o';
-//	}
-//	else {
-//
-//	}
-//}
+void turnX();
 
 int main()
 {
 	char gameState = 0;
-	char turn = 'x';
-	int location;
 	char boardPlaces[9] = { '1','2','3','4','5','6','7','8','9' };
 
 	while (gameState == 0) {
 		printBoard(boardPlaces);
 		if (turn == 'x') {
-			std::cout << "Player X, choose a location\n";
-			std::cin >> location;
-			boardPlaces[location - 1] = 'X';
-			turn = 'o';
+			turnX();
 		}
 		else {
 			std::cout << "Player O, choose a location\n";
@@ -47,4 +34,8 @@ int main()
 	}
 	return 0;
 }
-
+void turnX() {
+		std::cout << "Player X, choose a location\n";
+		std::cin >> location;
+		turn = 'o';
+}
