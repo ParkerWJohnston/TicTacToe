@@ -16,16 +16,11 @@ void getBoard(char board1, char board2, char board3, char board4, char board5, c
 
 int main()
 {
-    char boardPlace1 = '1';
-    char boardPlace2 = '2';
-    char boardPlace3 = '3';
-    char boardPlace4 = '4';
-    char boardPlace5 = '5';
-    char boardPlace6 = '6';
-    char boardPlace7 = '7';
-    char boardPlace8 = '8';
-    char boardPlace9 = '9';
-	getBoard(boardPlace1, boardPlace2, boardPlace3, boardPlace4, boardPlace5, boardPlace6, boardPlace7, boardPlace8, boardPlace9);
+	char gameState = 0;
+	/*while (gameState = 0);*/
+	char boardPlaces[9] = { '1','2','3','4','5','6','7','8','9' };
+
+	getBoard(boardPlaces[0], boardPlaces[1], boardPlaces[2], boardPlaces[3], boardPlaces[4], boardPlaces[5], boardPlaces[6], boardPlaces[7], boardPlaces[8]);
 
 	return 0;
 }
