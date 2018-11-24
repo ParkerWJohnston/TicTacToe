@@ -1,27 +1,69 @@
-// TicTacToe.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include "pch.h"
 #include <iostream>
 
 using namespace std;
 
-void getBoard(char board1, char board2, char board3, char board4, char board5, char board6, char board7, char board8, char board9) {
-	std::cout << " " << board1 << " | " << board2 << " | " << board3 << " \n";
+void printBoard(char board[9]) {
+	std::cout << " " << board[0] << " | " << board[1] << " | " << board[2] << " \n";
 	std::cout << " --|---|--\n";
-	std::cout << " " << board4 << " | " << board5 << " | " << board6 << " \n";
+	std::cout << " " << board[3] << " | " << board[4] << " | " << board[5] << " \n";
 	std::cout << " --|---|--\n";
-	std::cout << " " << board7 << " | " << board8 << " | " << board9 << " \n";
-};
+	std::cout << " " << board[6] << " | " << board[7] << " | " << board[8] << " \n";
+}
+
+int turnX();
+int turnO();
 
 int main()
 {
 	char gameState = 0;
-	/*while (gameState = 0);*/
-	char boardPlaces[9] = { '1','2','3','4','5','6','7','8','9' };
+	char boardPlaces[9] = { '0', '1','2','3','4','5','6','7','8' };
+	char NewPlace;
+	int location;
+	int turn = 0;
 
-	getBoard(boardPlaces[0], boardPlaces[1], boardPlaces[2], boardPlaces[3], boardPlaces[4], boardPlaces[5], boardPlaces[6], boardPlaces[7], boardPlaces[8]);
-
+	while (gameState == 0) {
+		printBoard(boardPlaces);
+		while (turn == 0) {
+			location = turnX();
+			if (location < 0 || location > 8) { // if location is not within the grid, retry
+				std::cout << "Enter a valid position\n";
+			}
+			else if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
+				boardPlaces[location] = 'X';
+				turn = 1; // sets turn to O
+			}
+			else {
+				std::cout << "Location already chosen, please retry\n";
+			}
+		}
+		printBoard(boardPlaces);
+		while (turn == 1) {
+			location = turnO();
+			if (location < 0 || location > 8) { // if location is not within the grid, retry
+				std::cout << "Enter a valid position\n";
+			}
+			else if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
+				boardPlaces[location] = 'O';
+				turn = 0; // sets turn to X
+			}
+			else {
+				std::cout << "Location already chosen, please retry\n";
+			}
+		}
+	}
 	return 0;
 }
 
+int turnX() {
+	int locationX;
+	std::cout << "Player X, choose a location\n";
+	std::cin >> locationX;
+	return locationX;
+}
+int turnO() {
+	int locationO;
+	std::cout << "Player O, choose a location\n";
+	std::cin >> locationO;
+	return locationO;
+}
