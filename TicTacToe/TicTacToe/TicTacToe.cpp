@@ -28,7 +28,6 @@ int main()
 			location = turnX();
 			if (location < 0 || location > 8) { // if location is not within the grid, retry
 				std::cout << "Enter a valid position\n";
-				location = turnX();
 			}
 			else if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
 				boardPlaces[location] = 'X';
@@ -43,7 +42,6 @@ int main()
 			location = turnO();
 			if (location < 0 || location > 8) { // if location is not within the grid, retry
 				std::cout << "Enter a valid position\n";
-				location = turnO();
 			}
 			else if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
 				boardPlaces[location] = 'O';
