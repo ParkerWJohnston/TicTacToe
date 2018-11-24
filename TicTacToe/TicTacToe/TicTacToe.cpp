@@ -26,12 +26,13 @@ int main()
 		printBoard(boardPlaces);
 		while (turn == 0) {
 			location = turnX();
-			if (location > 8 || location < 0) {
+			if (location < 0 || location > 8) { // if location is not within the grid, retry
+				std::cout << "Enter a valid position\n";
 				location = turnX();
 			}
 			else if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
 				boardPlaces[location] = 'X';
-				turn = 1;
+				turn = 1; // sets turn to O
 			}
 			else {
 				std::cout << "Location already chosen, please retry\n";
@@ -40,12 +41,13 @@ int main()
 		printBoard(boardPlaces);
 		while (turn == 1) {
 			location = turnO();
-			if (location > 8 || location < 0) {
+			if (location < 0 || location > 8) { // if location is not within the grid, retry
+				std::cout << "Enter a valid position\n";
 				location = turnO();
 			}
 			else if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
 				boardPlaces[location] = 'O';
-				turn = 0;
+				turn = 0; // sets turn to X
 			}
 			else {
 				std::cout << "Location already chosen, please retry\n";
