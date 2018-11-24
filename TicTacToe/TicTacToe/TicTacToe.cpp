@@ -26,7 +26,10 @@ int main()
 		printBoard(boardPlaces);
 		while (turn == 0) {
 			location = turnX();
-			if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
+			if (location > 8 || location < 0) {
+				location = turnX();
+			}
+			else if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
 				boardPlaces[location] = 'X';
 				turn = 1;
 			}
@@ -35,9 +38,12 @@ int main()
 			}
 		}
 		printBoard(boardPlaces);
-		while(turn == 1) {
+		while (turn == 1) {
 			location = turnO();
-			if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
+			if (location > 8 || location < 0) {
+				location = turnO();
+			}
+			else if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
 				boardPlaces[location] = 'O';
 				turn = 0;
 			}
@@ -46,20 +52,18 @@ int main()
 			}
 		}
 	}
-
-
-
 	return 0;
 }
+
 int turnX() {
-	int location;
+	int locationX;
 	std::cout << "Player X, choose a location\n";
-	std::cin >> location;
-	return location;
+	std::cin >> locationX;
+	return locationX;
 }
 int turnO() {
-	int location;
+	int locationO;
 	std::cout << "Player O, choose a location\n";
-	std::cin >> location;
-	return location;
+	std::cin >> locationO;
+	return locationO;
 }
