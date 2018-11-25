@@ -18,6 +18,7 @@ int main()
 {
     char gameState = 0;
     char boardPlaces[9] = { '0', '1','2','3','4','5','6','7','8' };
+    char NewPlace;
     int location;
     int turn = 0;
     
