@@ -13,14 +13,16 @@ void printBoard(char board[9]) {
 
 int turnX();
 int turnO();
+int analyzeBoard(char board[9]);
 
 int main()
 {
     char gameState = 0;
     char boardPlaces[9] = { '0', '1','2','3','4','5','6','7','8' };
+    int turnCount = 0;
     int location;
     int turn = 0;
-    
+
     while (gameState == 0) {
         printBoard(boardPlaces);
         while (turn == 0) {
@@ -31,12 +33,21 @@ int main()
             else if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
                 boardPlaces[location] = 'X';
                 turn = 1; // sets turn to O
+                turnCount ++;
             }
             else {
                 std::cout << "Location already chosen, please retry\n";
             }
         }
         printBoard(boardPlaces);
+        gameState = analyzeBoard(boardPlaces);
+        if(turnCount == 9) {
+            gameState = 3;
+            break;
+        }
+        if(gameState == 1) {
+            break;
+        }
         while (turn == 1) {
             location = turnO();
             if (location < 0 || location > 8) { // if location is not within the grid, retry
@@ -45,11 +56,23 @@ int main()
             else if (boardPlaces[location] != 'X' && boardPlaces[location] != 'O') {
                 boardPlaces[location] = 'O';
                 turn = 0; // sets turn to X
+                turnCount ++;
             }
             else {
                 std::cout << "Location already chosen, please retry\n";
             }
         }
+        gameState = analyzeBoard(boardPlaces);
+        
+    }
+    if(gameState == 1) {
+        std::cout << "Player X has won\n";
+    }
+    if(gameState == 2) {
+        std::cout << "Player O has won\n";
+    }
+    if(gameState == 3) {
+        std::cout << "Game is a draw\n";
     }
     return 0;
 }
@@ -65,4 +88,73 @@ int turnO() {
     std::cout << "Player O, choose a location\n";
     std::cin >> locationO;
     return locationO;
+}
+
+int analyzeBoard(char board[9]) {
+    int gameState = 0;
+    if(board[0] == board[1] && board[1] == board[2] && board[0] != 0) {
+        if(board[0] == 'X') {
+            gameState = 1;
+        }
+        else {
+            gameState = 2;
+        }
+    }
+    if(board[3] == board[4] && board[4] == board[5] && board[3] != 0) {
+        if(board[3] == 'X') {
+            gameState = 1;
+        }
+        else {
+            gameState = 2;
+        }
+    }
+    if(board[6] == board[7] && board[7] == board[8] && board[6] != 0) {
+        if(board[6] == 'X') {
+            gameState = 1;
+        }
+        else {
+            gameState = 2;
+        }
+    }
+    if(board[0] == board[3] && board[3] == board[6] && board[0] != 0) {
+        if(board[0] == 'X') {
+            gameState = 1;
+        }
+        else {
+            gameState = 2;
+        }
+    }
+    if(board[1] == board[4] && board[4] == board[7] && board[1] != 0) {
+        if(board[1] == 'X') {
+            gameState = 1;
+        }
+        else {
+            gameState = 2;
+        }
+    }
+    if(board[2] == board[5] && board[5] == board[8] && board[2] != 0) {
+        if(board[2] == 'X') {
+            gameState = 1;
+        }
+        else {
+            gameState = 2;
+        }
+    }
+    if(board[0] == board[4] && board[4] == board[8] && board[0] != 0) {
+        if(board[0] == 'X') {
+            gameState = 1;
+        }
+        else {
+            gameState = 2;
+        }
+    }
+    if(board[2] == board[4] && board[4] == board[6] && board[2] != 0) {
+        if(board[2] == 'X') {
+            gameState = 1;
+        }
+        else {
+            gameState = 2;
+        }
+    }
+    return gameState;
 }
