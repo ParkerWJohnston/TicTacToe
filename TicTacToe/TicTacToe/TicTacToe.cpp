@@ -73,7 +73,6 @@ int main() {
     if(gameState == 3) {
         std::cout << "Game is a draw\n";
     }
-    printBoard(boardPlaces);
     return 0;
 }
 
