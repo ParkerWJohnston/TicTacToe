@@ -74,19 +74,42 @@ int main()
     if(gameState == 3) {
         std::cout << "Game is a draw\n";
     }
+    printBoard(boardPlaces);
     return 0;
 }
 
 int turnX() {
-    int locationX;
-    std::cout << "Player X, choose a location\n";
-    std::cin >> locationX;
+    int locationX = 0;
+    bool input = false;
+    while(!input) {
+        std::cout << "Player X, choose a location\n";
+        std::cin >> locationX;
+        if(!cin){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input.  Try again:\n";
+        }
+        else {
+            input = true;
+        }
+    }
     return locationX;
 }
 int turnO() {
-    int locationO;
-    std::cout << "Player O, choose a location\n";
-    std::cin >> locationO;
+    int locationO = 0;
+    bool input = false;
+    while(!input) {
+        std::cout << "Player O, choose a location\n";
+        std::cin >> locationO;
+        if(!cin){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input.  Try again:\n";
+        }
+        else {
+            input = true;
+        }
+    }
     return locationO;
 }
 
