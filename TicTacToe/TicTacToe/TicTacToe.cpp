@@ -16,9 +16,9 @@ int turnO();
 int analyzeBoard(char board[9]);
 
 int main() {
-    char gameState = 0;
-    char boardPlaces[9] = { '0', '1','2','3','4','5','6','7','8' };
-    int turnCount = 0;
+    char gameState = 0; // 0 = run game, 1 = X wins 2 = O wins 3 = draw
+    char boardPlaces[9] = { '0','1','2','3','4','5','6','7','8' };
+    int turnCount = 0; //when turnCount hits 9 game decides its a draw
     int location;
     int turn = 0;
 
