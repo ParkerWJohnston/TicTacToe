@@ -15,8 +15,7 @@ int turnX();
 int turnO();
 int analyzeBoard(char board[9]);
 
-int main()
-{
+int main() {
     char gameState = 0;
     char boardPlaces[9] = { '0', '1','2','3','4','5','6','7','8' };
     int turnCount = 0;
@@ -84,7 +83,7 @@ int turnX() {
     while(!input) {
         std::cout << "Player X, choose a location\n";
         std::cin >> locationX;
-        if(!cin){
+        if(!cin) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Invalid input.  Try again:\n";
